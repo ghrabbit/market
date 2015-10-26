@@ -1,0 +1,22 @@
+#deny from all
+
+RewriteEngine on
+
+RewriteBase /yii/market/
+
+# Protect hidden files from being viewed
+<Files .*>
+	Order Deny,Allow
+	#Comment by ART
+	Deny From All
+	#Add by ART
+</Files>
+
+#RewriteCond %{REQUEST_FILENAME} !^favicon\.ico
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# otherwise forward it to index.php
+#RewriteRule . index.php
+RewriteRule .* index.php/$0 [PT]
+
