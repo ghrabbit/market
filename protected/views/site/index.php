@@ -19,3 +19,7 @@ the <a href="http://www.yiiframework.com/doc/">documentation</a>.
 Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p>
 
+<?php
+$m = new Mustache_Engine;
+echo $m->render('<p>mustache renderer:</p><p></p><h1>Hello {{planet}}</h1></p>', array('planet' => 'World!')); // "Hello World!"
+?>

@@ -10,4 +10,5 @@
 # Ignore all logfiles and tempfiles.
 /protected/runtime/*
 /protected/vendor/*
+/protected/composer.lock
 
