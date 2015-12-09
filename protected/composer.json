@@ -1,7 +1,8 @@
 {
-	"name": "ghrabbit/market",
+	"name": "ghrabbit/sample-eshop-yii",
 	"require": {
 		"php": ">=5.5.6",
-		"yiisoft/yii": "1.1.*"
+		"yiisoft/yii": "1.1.*",
+		"mustache/mustache": "~2.5"
 	}
 }
