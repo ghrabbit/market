@@ -1,0 +1,19 @@
+<div class="panel panel-primary" id="onspecials-holder">
+	<!--p>ON SPECIALS:{{itemsCount}} pageNo:{{pageNo}} pageSize:{{pageSize}}</p-->
+	<div class="panel-body">
+		<div class="notice"></div>
+		<div class="row content">
+			{{#pageItems}}
+				<!--p>model.id:{{model.id}} model.img_file:{{model.img_file}}</p-->
+				{{> onspecials/details}}
+			{{/pageItems}}
+		</div>
+		<div class="pager-holder pull-right">{{{pager}}}</div>
+	</div>	
+</div>
+
+	    
+
+
+			
+		

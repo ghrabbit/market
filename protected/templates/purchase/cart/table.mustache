@@ -1,0 +1,53 @@
+<div class="form-group">
+		<div class="col-lg-5">
+			<p class="form-control-static bg-info">{{labels.cart.shopping-cart}}</p>
+		</div>
+</div>
+<div class="form-group">
+		<label class="col-sm-2 control-label">{{labels.cart.qty}}</label>
+		<div class="col-sm-10">
+			<p class="form-control-static">{{data.cart.itemcount}}</p>
+		</div>
+</div>
+<div class="form-group">
+		<label class="col-sm-2 control-label">{{labels.cart.total}}</label>
+		<div class="col-sm-10">
+			<p class="form-control-static">{{data.cart.total}}</p>
+		</div>
+</div>
+<div class="form-group">
+		<label class="col-sm-2 control-label">{{labels.cart.productDetails}}</label>
+		<div class="col-sm-10">
+			<!--p class="form-control-static">{{data.cart.itemcount}}</p-->
+			<div class="table-responsive">	
+	<table class="table table-striped">
+	<thead>
+	<tr class="warning">
+		<td>{{labels.cart.product}}</td>
+		<td class="text-right">{{labels.cart.price}}</td>
+		<td class="text-right">{{labels.cart.qty}}</td>
+		<td colspan=2 class="text-right">{{labels.cart.total}}</td>
+	</tr>
+	</thead>
+	<tbody>
+	{{#data.cart.products2Items}}
+		<tr>
+			<td>{{product.title}}</td>
+			<td class="text-right">{{product.price}}</td>
+			<td class="text-right">{{qty}}</td>
+			<td class="text-right">{{total}}</td>
+		</tr>
+	{{/data.cart.products2Items}}
+	<tr>
+			<td></td>
+			<td></td>
+			<td class="info text-right">{{labels.cart.grand-total}}</td>
+			<td class="info text-right">{{data.cart.total}}</td>
+		</tr>
+	</tbody>	
+	</table>
+</div>	
+
+		</div>
+</div>
+

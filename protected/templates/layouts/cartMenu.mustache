@@ -1,0 +1,36 @@
+<div class="panel panel-warning hidden-small">
+  <div class="panel-heading">
+    <h4 class="panel-title">{{labels.shopping}}</h4>
+  </div>
+
+
+<ul class="list-group">
+	<a class="list-group-item" href="/shopping/cart">
+		<h5 class="list-group-item-heading">
+			<span class="glyphicon glyphicon-shopping-cart"></span> 
+			{{labels.shopping-cart}}
+		</h5>
+	</a>
+				<!---->
+
+	<p class="list-group-item">
+		<span class="badge pull-right">{{model.itemcount}}</span>
+		{{labels.qty}}
+	</p>
+
+	<p class="list-group-item">
+		<span class="badge pull-right">{{{model.ftotal}}}</span>
+		{{labels.total}}	</p>
+				<!---->
+	<p class="list-group-item">
+		<a href="/purchase" id="purchase-now" class="btn btn-warning btn-block">
+			<i class="glyphicon glyphicon-transfer"></i> {{labels.purchase-now}}
+		</a>	
+	</p>
+	<!--<p class="list-group-item">
+		<button id="purchase-now" class="btn btn-warning btn-block"><i class="glyphicon glyphicon-transfer"></i> {{labels.purchase-now}}</button>
+	</p>-->
+	
+</ul>
+</div>
+

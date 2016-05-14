@@ -1,0 +1,14 @@
+{{#errors}}	
+<div class="alert alert-danger alert-dismissable">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<h3><i class="glyphicon glyphicon-exclamation-sign"></i> Необходимо исправить следующие ошибки:</h3>
+	<div id="alert-body">
+		<h4 class="msg-header">Error
+			<small>
+			{{#value}}<p class="msg-text">{{.}}</p>{{/value}}
+			</small>
+		</h4>
+	</div>
+</div>
+{{/errors}}
+

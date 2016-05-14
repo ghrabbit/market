@@ -1,0 +1,35 @@
+<h2><p class="top-title">{{title}}</p></h2>
+{{#info}}{{{info}}}{{/info}}
+
+<table class="table table-bordered table-striped">
+<thead>
+	<tr>
+		<th>{{labels.Action}}</th>
+		<th>{{labels.Category}}</th>
+		<th>{{labels.Title}}</th>
+		<th>{{labels.Description}}</th>
+		<th>{{labels.ImageFile}}</th>
+	<tr>
+</thead>
+
+{{#items}}
+<tr>
+	
+	<td>
+		<a title="{{labels.Edit}} {{title}}" href="{{baseUrl}}/product/edit/{{id}}"><i class="glyphicon glyphicon-edit"></i> </a>
+		<a title="{{labels.Remove}} {{title}}" href="{{baseUrl}}/product/remove/{{id}}"><i class="glyphicon glyphicon-remove"></i></a>
+	</td>
+	<td>
+		<table>
+			{{#categories}}
+				<tr><td>{{title}}</td></tr>
+			{{/categories}}	
+		</table>	
+	</td>
+	<td><a title="Edit this category" href="{{baseUrl}}/product/edit/{{id}}">{{title}}</a></td>
+	<td>{{descriptionShowShort}}</td>
+	<td>{{price}}</td>
+	<td>{{img_file}}</td>
+</tr>
+{{/items}}
+</table>

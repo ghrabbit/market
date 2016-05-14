@@ -1,0 +1,59 @@
+<h2><p class="top-title- bg-primary">{{pageTitle}}</p></h2>
+{{#postmsg}}
+<div class="alert alert-success">{{ postmsg }}</div>
+{{/postmsg}}
+{{^postmsg}}
+<p><h3>{{labels.filloutForm}}</h3></p>
+
+<div class="form-">
+<form class="form-horizontal" name="contactForm" role="form" action="" method="post">
+  <div class="alert alert-info alert-dismissable">
+	<i class="glyphicon glyphicon-exclamation-sign"></i> <small>{{{labels.requiredFields}}}</small>
+</div>
+<div class="errorSummary">{{#errorSummary}}{{{ errorSummary }}}{{/errorSummary}}</div>
+  <div class="form-group">
+    <label for="inputName" class="col-sm-3 control-label">{{labels.name}} <span class="required">*</span></label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="name" id="inputName" placeholder="name" value="{{model.name}}">
+    </div>
+  </div>
+  -
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-3 control-label">{{labels.email}} <span class="required">*</span></label>
+    <div class="col-sm-5">
+      <input type="email" class="form-control" name="email" id="inputEmail" placeholder="email" value="{{model.email}}">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputSubject" class="col-sm-3 control-label">{{labels.subject}} <span class="required">*</span></label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="subject" id="inputSubject" placeholder="subject" size=60 maxlength=128 value="{{model.subject}}">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputBody" class="col-sm-3 control-label">{{labels.body}} <span class="required">*</span></label>
+    <div class="col-sm-9">
+      <textarea class="form-control" name="body" id="inputBody" placeholder="body" rows="6" cols="50">{{model.body}}</textarea>
+	  <!--<input type="textarea" class="form-control" name="body" id="inputBody" placeholder="body" rows="6" cols="50"></input>-->
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputVerifyCode" class="col-sm-3 control-label">{{labels.verifyCode}} <span class="required">*</span></label>
+    <div class="col-sm-9">
+		{{{captcha}}}
+		<input type="text" class="form-control" name="verifyCode" id="inputVerifyCode" placeholder="verify Code">
+		<div class="hint help-block">{{labels.captchaHelp}}</div> 
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <button type="submit" class="btn btn-default" name="submit-btn">{{labels.submit}}</button>
+	</div>
+  </div>
+</form>
+</div><!-- form -->
+{{/postmsg}}

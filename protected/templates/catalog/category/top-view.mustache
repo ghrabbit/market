@@ -1,0 +1,61 @@
+<!--
+category view
+-->
+<!--div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="jumbotron">
+			<img  src="/images/product/small/{{#model.img_file}}{{model.img_file}}{{/model.img_file}}{{^model.img_file}}truchet.gimp.png{{/model.img_file}}">
+						
+			<div class="caption">
+				<table><td height="60">
+					<h4><span class="subcategories-view" value="{{model.id}}">{{model.title}}</span></h4>
+				</td></table>
+			</div>
+			{{model.description}}
+		</div>	
+</div-->
+<!--
+<div class="row-">
+	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+		<h3>{{model.title}}</h3>
+	</div>
+</div>
+-->
+<!---->
+<div class="row-">	
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<p><h4>{{labels.image}}</h4></p>
+		<div class="thumbnail">
+			<img src="/images/category/small/{{#model.img_file}}{{model.img_file}}{{/model.img_file}}{{^model.img_file}}truchet.gimp.png{{/model.img_file}}"</img></p>
+     	</div>
+		<hr>
+	</div>	
+	<div class="col-xs-12 col-sm-6 col-md-6">
+		<!--<p><h4>{{labels.title}}</h4></p>
+		<p>{{{model.title}}}</p>-->
+		<h3>{{model.title}}</h3>
+		<hr>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6">
+		<!--<p><h4>{{labels.description}}</h4></p>-->
+		<small>{{{model.description}}}</small>
+		<hr>
+	</div>	
+</div>
+<!---->
+<div class="row marketing-">
+	<!--p>model.categoriesCount={{model.categoriesCount}}</p-->
+	{{#model.hasCategories}}
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<p><h4>{{labels.categories}}</h4></p>
+		<ul class="nav nav-pills nav-stacked">
+			{{#model.categories}}
+			<li class"active">
+				<a href="{{baseUrl}}/catalog/category/{{id}}">
+				<span class="badge- pull-right-">{{title}}</span>
+				</a>
+			</li>
+			{{/model.categories}}
+		</ul>
+	</div>	
+	{{/model.hasCategories}}
+</div>

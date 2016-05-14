@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<head>
+    <meta charset="utf-8">
+    <title>{{appName}} : {{pageTitle}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content>
+    <meta name="author" content>
+	
+	<!--link rel="icon" href="{{baseUrl}}/../../../images/icons/leaf3.ico"/-->
+	<link rel="stylesheet" type="text/css" href="{{vendorUrl}}/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{vendorUrl}}/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{vendorUrl}}/font-awesome/css/font-awesome.css"/>
+	<link rel="stylesheet" type="text/css" href="{{baseUrl}}/css/admin/site.css"/>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--
+    <script src="{{vendorUrl}}/jquery/dist/jquery.min.js"></script>
+    <script src="{{vendorUrl}}/bootstrap/dist/js/bootstrap.min.js"></script>
+    --> 
+  </head>
+
+  <body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+	   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+		<!--img class="navbar-brand" src="{{baseUrl}}/../../../images/icons/leaf3.ico"/-->
+		<a href="/site/index" class="sample-eshop-yii-logo">sample-eshop-yii-logo</a>
+        <!--a class="navbar-brand" href="{{baseUrl}}/home/index">{{pageTitle}}</a--> 
+	 </div> 
+	  
+     <div class="collapse navbar-collapse navbar-ex1-collapse">
+       <ul class="nav navbar-nav">
+         <li class="active"><a href="{{baseUrl}}"><i class="glyphicon glyphicon-home"></i> {{labels.home}}</a></li> 
+	   </ul>
+		<ul class="nav navbar-nav navbar-right">
+		  {{#authenticated}}
+		    <li><a class="navbar-link" href="{{baseUrl}}/account/logout"><i class="glyficon glyficon-log-out icon-white"></i>{{username}} {{labels.logout}}</a></li>
+		  {{/authenticated}}
+		  {{^authenticated}}
+		     <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{username}} <b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+		           <li><a class="navbar-link"  href="{{baseUrl}}/account/login"><i class="glyphicon glyphicon-log-in icon-white"></i> {{labels.login}}</a></li>
+                   <!--li><a class="navbar-link"  href="{{baseUrl}}/account/signup">{{labels.signup}}</a></li-->
+		      </ul>
+               </li>
+		  {{/authenticated}}	
+         </ul> 
+       </div><!--/.nav-collapse -->
+      </div> 
+   </nav>
+	
+		
+	
+	<div class="container">
+	  <div class="row">
+        <div class="col-md-12 col-lg-12">
+	     {{{breadcrumbs}}}
+	   </div>
+	  </div>
+	  
+      <div class="row">
+        <div class="col-md-3 col-lg-3">
+          <div class="well- sidebar-nav">
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title-">{{labels.admin}}  <small>{{labels.operations}}</small></h4>
+				</div>
+
+				<ul class="list-group">
+				<a class="list-group-item active" href="{{baseUrl}}/admin/index"><i class="glyphicon glyphicon-flag"></i> {{labels.adminHome}}</a>
+				<a class="list-group-item" href="{{baseUrl}}/category/index">{{labels.category}}</a>
+				<a class="list-group-item" href="{{baseUrl}}/product/index">{{labels.product}}</a>
+				<a class="list-group-item" href="{{baseUrl}}/user/index">{{labels.user}}</a>
+				<a class="list-group-item" href="{{baseUrl}}/order/index">{{labels.order}}</a>
+				</ul>
+			</div>
+			
+			{{{topsideMenu}}}
+			
+		</div><!--/.well -->
+        </div><!--/span-->
+        <div class="content-part col-md-9 col-lg-9">
+          {{{content}}}
+        </div><!--/span-->
+      </div><!--/row-->
+	</div><!--/.fluid-container-->
+	<!--div class="navbar-inverse"-->
+     <!--div class="container"-->
+      <footer class="well- navbar-inverse">
+	    <div class="container">
+	     <div class="row">
+	      <div class="col-lg-12">
+	          <p class="pull-right">{{{rights}}}</p>
+	      </div>
+	     </div>
+	    </div>
+      </footer>
+    <!--/div--><!--/.container-->
+   <!--/div-->
+
+  </body>
+</html>
+
+<!-- This document saved from fluid.html -->

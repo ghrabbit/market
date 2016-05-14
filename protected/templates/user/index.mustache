@@ -1,0 +1,32 @@
+<h2><p class="top-title">{{title}}</p></h2>
+{{#info}}{{{info}}}{{/info}}
+
+<table class="table table-bordered table-striped">
+<thead>
+	<tr>
+		<th>{{labels.Action}}</th>
+		<th>{{labels.username}}</th>
+		<th>{{labels.firstname}}</th>
+		<th>{{labels.lastname}}</th>
+		<th>{{labels.email}}</th>
+		<th>{{labels.address}}</th>
+		<th>{{labels.roles}}</th>
+	<tr>
+</thead>
+
+{{#items}}
+<tr>
+	
+	<td>
+		<a title="{{labels.Edit}} {{title}}" href="{{baseUrl}}/user/edit/{{id}}"><i class="glyphicon glyphicon-edit"></i> </a>
+		<a title="{{labels.Remove}} {{title}}" href="{{baseUrl}}/user/remove/{{id}}"><i class="glyphicon glyphicon-remove"></i></a>
+	</td>
+	<td><a title="Edit this user" href="{{baseUrl}}/user/edit/{{id}}">{{username}}</a></td>
+	<td>{{firstname}}</td>
+	<td>{{lastname}}</td>
+	<td>{{email}}</td>
+	<td>{{addressShowShort}}</td>
+	<td>{{_roles}}</td>
+</tr>
+{{/items}}
+</table>

@@ -1,0 +1,25 @@
+{{> view/header}}
+
+{{> view.detailsHeader}}
+	<table class="table table-bordered table-striped">
+	<thead>
+	<tr>
+		<th>{{labels.product}}</td>
+		<th class="text-right">{{labels.price}}</td>
+		<th class="text-right">{{labels.qty}}</td>
+		<th colspan=2 class="text-right">{{labels.total}}</td>
+	</tr>
+	<thead>
+    <tbody>
+	{{#items}}
+		<tr>
+			<td>{{product.title}}</td>
+			<td class="text-right">{{price}}</td>
+			<td class="text-right">{{qty}}</td>
+			<td>{{{labels.moneyUnit}}}</td>
+			<td class="text-right">{{total}}</td>
+		</tr>
+	{{/items}}
+	</tbody>
+	</table>
+

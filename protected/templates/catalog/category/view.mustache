@@ -1,0 +1,35 @@
+<!--
+category view
+-->
+<div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="thumbnail">
+			<img src="/images/category/small/{{#model.img_file}}{{model.img_file}}{{/model.img_file}}{{^model.img_file}}truchet.gimp.png{{/model.img_file}}">
+						
+			<!--div class="caption"-->
+				<table><td height="60">
+					<h4><span class="subcategories-view" value="{{model.id}}">{{model.title}}</span></h4>
+				</td></table>
+			<!--/div-->
+			{{#button}}
+			<button type="button" class="btn btn-default btn-block 
+			subCategories-view" 
+			{{^model.subCategories}}disabled="disabled"{{/model.subCategories}}><span class="glyphicon glyphicon-barcode"></span> {{labels.subCategories}}</button>
+			<button class="btn btn-primary btn-block catProducts-view" 
+				{{^model.products}}disabled="disabled"{{/model.products}}>
+				<i class="glyphicon glyphicon-shopping-cart"></i> {{labels.products}}</button>
+			{{/button}}
+			{{^button}}
+			<a class="btn btn-default btn-block subCategories-view" 
+				{{^model.subCategories}}disabled="disabled"{{/model.subCategories}}
+				href="{{baseUrl}}/catalog/category/{{model.id}}">
+				<i class="glyphicon glyphicon-barcode"></i> 
+				{{labels.subCategories}}
+			</a>
+			<a class="btn btn-primary btn-block catProducts-view" 
+				{{^model.products}}disabled="disabled"{{/model.products}} 
+				href="{{baseUrl}}/catalog/category/{{model.id}}/products">
+				<i class="glyphicon glyphicon-shopping-cart"></i> {{labels.products}}
+			</a>
+			{{/button}}
+		</div>	
+</div>

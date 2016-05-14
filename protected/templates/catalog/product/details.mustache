@@ -1,0 +1,59 @@
+<div id="notice">{{#errorSummary}}{{{errorSummary}}}{{/errorSummary}}</div>
+{{^errorSummary}}
+<div class="row marketing">
+	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+		<h3>{{model.title}}</h3>
+	</div>
+	<div class="col-xs-7 col-sm-6 col-md-4 col-lg-4">
+		<span class="label label-warning  pull-right"><h4>{{model.price}}</h4></span><h4>{{labels.price}}</h4>
+		
+		<!--<span class="badge pull-right"><h4><-%=model.price}}</h4></span><h4>Price</h4>-->
+	</div>
+	<div class="col-xs-5 col-sm-6 col-md-5 col-lg-5">
+		{{#button}}
+		<button class="btn btn-primary btn-lg add-to-cart"><i class="glyphicon glyphicon-shopping-cart"></i> {{labels.addToCart}}</button>
+		{{/button}}
+		{{^button}}
+		<a class="btn btn-primary btn-lg" href="{{baseUrl}}{{routMarker}}shopping/cartAdd/{{model.id}}"><i class="glyphicon glyphicon-shopping-cart"></i> {{labels.addToCart}}</a>
+		{{/button}}
+	</div>
+</div>
+<!---->
+
+<div class="row marketing">	
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<p><h4>{{labels.image}}</h4></p>
+		<div class="thumbnail">
+			<img src="/images/product/norm/{{model.img_file}}"</img></p>
+     	</div>
+		<hr>
+	</div>	
+	<div class="col-xs-12 col-sm-6 col-md-6">
+		<p><h4>{{labels.description}}</h4></p>
+		<p>{{{model.description}}}</p>
+		<hr>
+	</div>	
+</div>
+<!---->
+
+<div class="row marketing">
+	<!--p>model.categoriesCount={{model.categoriesCount}}</p-->
+	{{#model.hasCategories}}
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<p><h4>{{labels.categories}}</h4></p>
+		<ul class="nav nav-pills nav-stacked">
+			{{#model.categories}}
+			<li class"active">
+				<a href="{{baseUrl}}/catalog/category/{{id}}">
+				<span class="badge- pull-right-">{{title}}</span>
+				</a>
+			</li>
+			{{/model.categories}}
+		</ul>
+	</div>	
+	{{/model.hasCategories}}
+</div>
+<!--hr class="clearfix"-->
+{{/errorSummary}}
+
+

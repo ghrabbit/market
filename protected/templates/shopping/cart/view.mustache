@@ -1,0 +1,55 @@
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="thumbnail">
+			
+			<div class="clicimg">
+				<img tabindex="1" src="/images/product/small/{{model.img_file}}"></img>
+				<dl>
+					<dt></dt>
+					<dd><img src="/images/product/norm/{{model.img_file}}"></img><p><h4>{{model.title}}</h4></p></dd>
+				</dl>
+			</div>
+			<div class="caption">
+				<table><td height="60">
+				<h4><a href="{{baseUrl}}/catalog/productDetails/{{model.id}}">{{model.title}}</a></h4>
+				</td></table>
+				<p>{{labels.price}}<span class="badge pull-right"> {{{model.price}}}</span></p>
+				<p>{{labels.qty}}<span class="badge pull-right"> {{model.qty}}</span></p>
+				<p>{{labels.total}}<span class="badge pull-right"> {{model.total}}</span></p>
+				<p>
+				{{#button}}
+				<button class="btn btn-danger remove-from-cart" data-toggle="tooltip" data-placement="top" 
+					title="{{labels.removeFromCart}}"><i class="glyphicon glyphicon-remove"></i></button> 
+				<button class="btn btn-warning add-to-cart-minus" data-toggle="tooltip" data-placement="top" 
+					title="{{labels.removeUnitFromCart}}"><i class="glyphicon glyphicon-minus"></i></button>
+				<!-- 
+				<button class="btn btn-primary add-to-cart" data-toggle="tooltip" data-placement="top" 
+					title="{{labels.addUnitToCart}}"><i class="glyphicon glyphicon-shopping-cart"></i></button> 
+				-->		
+				 <span class="pull-right">
+					<button  
+						class="btn btn-default product-details" data-toggle="tooltip" data-placement="top"  title="{{labels.productDetails}}">
+						<i class="glyphicon glyphicon-paperclip"></i></button>
+				</span>
+				{{/button}}
+				{{^button}}
+				<a href="{{baseUrl}}/shopping/cartRemove/id/{{model.product.id}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" 
+					title="{{labels.removeFromCart}}"><i class="glyphicon glyphicon-remove"></i></a> 
+				<a href="{{baseUrl}}/shopping/cartAdd/id/{{model.product.id}}/qty/-1" class="btn btn-warning" data-toggle="tooltip" data-placement="top" 
+					title="{{labels.removeUnitFromCart}}"><i class="glyphicon glyphicon-minus"></i></a>
+				<a href="{{baseUrl}}/shopping/cartAdd/id/{{model.product.id}}/qty/1" class="btn btn-primary" data-toggle="tooltip" data-placement="top" 
+					title="{{labels.addUnitToCart}}"><i class="glyphicon glyphicon-shopping-cart"></i></a> 
+						
+				 <span class="pull-right">
+					<a href="{{baseUrl}}/catalog/productDetails/{{model.product.id}}" 
+						class="btn btn-default" data-toggle="tooltip" data-placement="top"  title="{{labels.productDetails}}">
+						<i class="glyphicon glyphicon-paperclip"></i></a>
+				</span>
+				{{/button}}
+				</p>
+			</div>
+			
+		</div>	
+	</div>
+
+			
+		

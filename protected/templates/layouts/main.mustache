@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<head>
+    <meta charset="utf-8">
+    <title>{{appName}} : {{pageTitle}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content>
+    <meta name="author" content>
+
+	<link rel="icon" href="{{baseUrl}}/favicon.ico"/>
+    <!--link rel="stylesheet" type="text/css" href="{{staticUrl}}/css/main.css"/-->
+    <link rel="stylesheet" type="text/css" href="{{vendorUrl}}/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{vendorUrl}}/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <!--link rel="stylesheet" type="text/css" href="{{vendorUrl}}/selectize/css/selectize.bootstrap3.css"/-->
+    <link rel="stylesheet" type="text/css" href="{{vendorUrl}}/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="{{staticUrl}}/css/site.css"/>
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- see index.php in root directory
+	<script src="{{vendorUrl}}/jquery/dist/jquery.min.js"></script>
+    <script src="{{vendorUrl}}/bootstrap/dist/js/bootstrap.min.js"></script>
+    -->
+  </head>
+
+  <body>
+
+    {{{topNavbar}}}
+	
+	<div class="container">
+	  <div class="row">
+        <div class="col-md-12 col-lg-12">
+		<!--breadcrumbs-->
+	      {{{breadcrumbs}}}
+	    </div>
+	  </div>
+	  
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+          <div class="sidebar-nav hidden-small">
+			{{{topsideMenu}}}{{{userMenu}}}{{{cartMenu}}}
+		  </div><!--/.well -->
+        </div><!--/col-->
+        <div class="content-part col-sm-8 col-md-9 col-lg-9">
+          {{{content}}}
+        </div><!--/col-->
+      </div><!--/row-->
+	</div><!--/container-->
+	
+    <footer class="well-">
+	  <div id="footer">
+	   <div class="container">
+	     <div class="row">
+		   <div class="col-md-12">
+	         <div class="text-center">
+	          
+             </div>
+	       </div>
+	     </div>
+	     <div class="row">
+	       <div class="col-md-3">
+			
+			<!--
+			<a href="#" class="yii-logo">Yii</a>
+			<div class="text-muted">The Fast, Secure and Professional PHP Framework</div>
+			-->
+            <dl class="dl-horizontal-">
+              <dt><a href="http://github.com/ghrabbit/sample-eshop-yii" class="sample-eshop-logo">sample-eshop</a></dt>
+              <dd>Shop application sample series</dd>
+            </dl>
+		  </div>
+		  <div class="col-md-6">
+			<dl class="dl-horizontal-">
+              <dt><a href="http://yiiframework.com" class="yii-logo">Yii</a></dt>
+              <dd>The Fast, Secure and Professional PHP Framework</dd>
+              <dt><a href="http://mustache.github.com" class="mustache-logo">mustache</a></dt>
+              <dd>Logic-less templates</dd>
+            </dl>
+		  </div>
+		  
+	      <div class="col-md-3">
+	        <div class="text-center">
+	          <!--{{{rights}}}-->
+            </div>
+	      </div>
+	      
+	    </div><!-- end row -->
+	    <div class="row">
+		   <div class="col-md-12">
+	         <div class="text-center">
+	          {{{rights}}}
+             </div>
+	       </div>
+	     </div>
+	  </div>
+	 </div>
+    </footer>
+
+
+
+  </body>
+</html>
+
+<!-- This document saved from fluid.html -->

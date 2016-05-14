@@ -1,0 +1,69 @@
+{{> edit/header}}
+
+<form class="form-horizontal" role="form" name="{{formName}}" method="post" action="">
+  {{> form/header}}
+  <div class="form-group">
+    <label for="inputUserName" class="col-sm-3 control-label">{{labels.username}} *</span></label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="username" id="inputUserName" placeholder="username" value={{model.username}}>
+    </div>
+  </div>
+  
+  <!--
+  <div class="form-group">
+    <label for="inputPassword" class="col-sm-3 control-label">password *</span></label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="password" id="inputPassword" placeholder="password" size=60 maxlength=32 value=<-%=password}}>
+    </div>
+  </div>
+  -->
+ 
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-3 control-label">{{labels.email}} *</span></label>
+    <div class="col-sm-5">
+      <input type="email" class="form-control" name="email" id="inputEmail" placeholder="email" value={{model.email}}>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputFirstName" class="col-sm-3 control-label">{{labels.firstname}} *</span></label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="firstname" id="inputFirstName" placeholder="firstname" size=60 maxlength=128 value={{model.firstname}}>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputLastName" class="col-sm-3 control-label">{{labels.lastname}} *</span></label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="lastname" id="inputLastName" placeholder="lastname" size=60 maxlength=128 value={{model.lastname}}>
+    </div>
+  </div>
+  
+    <div class="form-group">
+    <label for="inputPhone" class="col-sm-3 control-label">{{labels.phone}} *</span></label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="phone" id="inputPhone" placeholder="phone" size=20 maxlength=11 value={{model.phone}}>
+    </div>
+  </div>
+  
+    <div class="form-group">
+    <label for="inputAddress" class="col-sm-3 control-label">{{labels.address}} *</span></label>
+    <div class="col-sm-9">
+      <textarea class="form-control" name="address" id="inputAddress" placeholder="Address" rows="6" cols="50">{{model.address}}</textarea>
+	</div>
+  </div>
+
+    <div class="form-group">
+    <label for="inputRoles" class="col-sm-3 control-label">{{labels.roles}}</span></label>
+    <div class="col-sm-9">
+      <textarea class="form-control" name="_roles" id="inputRoles" placeholder="Roles" rows="6" cols="50">{{model._roles}}</textarea>
+	</div>
+  </div>
+
+  
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <button type="submit" class="btn btn-default">{{labels.submit}}</button>
+	</div>
+  </div>
+</form>

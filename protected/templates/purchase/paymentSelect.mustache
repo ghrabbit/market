@@ -1,0 +1,30 @@
+	<div class="form-group">
+		<!--label class="col-lg-2 control-label">{{labels.step}}</label-->
+		<div class="col-lg-5">
+			<p class="form-control-static bg-primary">{{labels.select1}}</p>
+		</div>
+	</div>
+		
+	<div class="form-group">
+		<label class="col-lg-2 control-label">{{labels.paysys}}</label>
+		<div class="col-lg-5">
+			<!--select id="paySystem" name="paySystem"-->
+			<select id="paySystem" name="paySystem"  style="display: none;">
+			{{#data.paymentKinds}}
+				<option value="{{attribute}}" {{#isSelected}}selected{{/isSelected}}>{{value}}</option>
+			{{/data.paymentKinds}}	
+			</select>
+		</div>
+	</div>
+
+<script src="{{vendorUrl}}/selectize/js/standalone/selectize.js"></script>
+<script>
+		$('#paySystem').selectize({
+					create: true,
+					sortField: {
+						field: 'text',
+						direction: 'asc'
+					},
+					dropdownParent: 'body'
+		});
+</script>

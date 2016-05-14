@@ -1,0 +1,21 @@
+<div class="panel panel-default hidden-small">
+			<div class="panel-heading">
+				<h4 class="panel-title">{{labels.actions}}</h4>
+			</div>
+
+			<ul class="list-group">
+				<!--a  class="list-group-item active" href="<-?php echo Yii::app()->baseUrl?>/home/index"><i class="glyphicon glyphicon-home"></i> <-?php echo Yii::t('app','Home</a-->
+				<a class="list-group-item" href="#catalog">{{labels.catalog}}</a>
+				{{#authenticated}}
+				<a class="list-group-item" href="#logout"><i class="glyphicon glyphicon-log-out"></i> {{labels.logout}}</a>
+				<a class="list-group-item" href="#settings">{{labels.settings}}</a>
+				<a class="list-group-item" href="#password">{{labels.password}}</a>
+				{{/authenticated}}
+				{{^authenticated}}
+				<a class="list-group-item" href="#login"><i class="glyphicon glyphicon-log-in"></i> {{labels.login}}</a>
+				<a class="list-group-item" href="#signup">{{labels.signup}}</a>
+				{{/authenticated}}
+				<a class="list-group-item" href="#about">{{labels.about}}</a>
+				<a class="list-group-item" href="contact">{{labels.contact}}</a>
+			</ul>
+</div>

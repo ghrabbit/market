@@ -1,0 +1,30 @@
+{{! mail template}}
+Hello {{order.customer}} ! Thanks for using {{appName}}! 
+
+Your order data is: 
+
+{{labels.order.id}}:{{order.id}} {{labels.order.o_timestamp}}:{{order.credate}}
+{{labels.order.qty}}:{{order.qty}} {{labels.order.amount}}:{{order.amount}}
+
+
+{{labels.product.productDetails}}:{{order.itemsCount}}
+
+{{labels.product.title}}
+{{labels.product.price}} / {{labels.order.qty}} / {{labels.order.total}}
+---------------------------->%-------------------------------
+{{#order.items}}
+{{product.title}}
+{{product.price}} / {{qty}} / {{total}}
+{{/order.items}}
+---------------------------->%-------------------------------
+
+Чтобы Ваш заказ стал действительным, вы должны его активировать до {{activatePeriod}}. Для этого перейдите по ссылке:
+
+{{activateLink}}
+
+Have fun, and don't hesitate to contact us with your feedback.
+
+The {{appName}} Team
+https://{{baseUrl}} 
+
+{{! Thanks Heroku! }}

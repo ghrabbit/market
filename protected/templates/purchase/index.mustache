@@ -1,0 +1,36 @@
+<h2><p class="top-title">{{title}}</p></h2>
+
+{{^cart.itemcount}}
+		<div class="alert alert-danger">
+			<p><i class="icon-exclamation-sign"></i> <h4>{{labels.attention}}!</h4></p>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+
+			{{labels.shopcart1}}
+		</div>
+{{/cart.itemcount}}
+	
+{{{errorSummary}}}
+	
+<div class="form">
+  <form id="purchase-form" name="entryform" class="form-horizontal" role="form" action="" method="post">
+    <input class="hidden" name="page_id" value={{page_id}}>
+    <input class="hidden" name="func">
+    
+    <!--generate actions control bar-->
+    <div class="col-lg-7">
+	  <div class="form-group">
+      {{#actions}}
+		<a class="btn btn-default {{#value.pullRight}}pull-right{{/value.pullRight}}" href="Javascript:purchasePageSubmit('{{attribute}}')">{{title}}</a>
+	  {{/actions}}
+	  </div>
+    </div>	
+    {{{page_content}}}
+  </form>
+</div>
+<script language="Javascript">
+function purchasePageSubmit(func) {
+	var frm = document.getElementById('purchase-form');
+	frm.func.value = func;
+	frm.submit();
+}	
+</script>

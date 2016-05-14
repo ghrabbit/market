@@ -1,0 +1,28 @@
+<h2>{{title}} <small>#{{model.id}}</small></h2>
+<div class="alert alert-info">
+<div class="row">
+	<div class="col-xs-6 col-sm-6 col-md-4">{{labels.ordered}}:</div>
+		<div class="col-xs-6 col-md-4">{{model.credate}}</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-4">{{labels.username}}:</div>
+		<div class="col-xs-6 col-md-4"><a href="{{baseUrl}}/user/edit/user_id">{{model.user.username}}</a></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-4">{{labels.status}}:</div>
+		<div class="col-xs-6 col-md-4">{{model.status}}</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-4">{{labels.approved}}:</div>
+		<div class="col-xs-6 col-md-4">{{model.apprdate}}</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-4">{{labels.amount}}:</div>
+		<div class="col-xs-6 col-md-4">{{{labels.moneyUnit}}} {{model.amount}}</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 col-sm-6 col-md-4">{{labels.customerInfo}}:</div>
+		<div class="col-xs-6 col-md-4">{{model.customer}}</div>
+	</div>	
+</div>
+

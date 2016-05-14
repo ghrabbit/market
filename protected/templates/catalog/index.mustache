@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h1>{{labels.catalog}} <small> | {{title}}</small></h1>
+</div>
+
+
+<div id="breadcrumbs-holder" class="row">
+     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		{{{localBreadcrumbs}}} 
+	</div>
+</div>
+
+<div id="view-holder">
+  <div class="panel panel-primary-">
+    <!--
+    <div class="panel-heading">
+	  <h3 class="panel-title">{{model.title}} <small>{{#model.description}}* {{model.description}}{{/model.description}}</small></h3>
+	  
+    </div>
+    -->
+    <div class="panel-body">
+	  <div class="notice"></div>
+	  <div class="row content-">
+	  {{#categoryTop}}
+		  {{> category/top-view}}
+	  {{/categoryTop}}
+	  </div>
+	  <div class="row content-">
+		{{#categories}}
+		  {{> category/view}}
+	    {{/categories}}
+	    {{#categoryDetails}}
+		  {{> category/details}}
+	    {{/categoryDetails}}
+	    {{#products}}
+		  {{> product/view}}
+	    {{/products}}
+	    {{#productDetails}}
+		  {{> product/details}}
+	    {{/productDetails}}
+	  </div>
+	  <div class="pager-holder  pull-right">{{{pager}}}</div>
+    </div>	
+  </div>
+</div>
+
+	    
+
+
+			
+		

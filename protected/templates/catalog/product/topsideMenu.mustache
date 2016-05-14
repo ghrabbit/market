@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h4 class="panel-title-">{{title}}</h4>
+	</div>
+	<ul class="list-group">
+		{{#model.id}}
+			<a class="list-group-item" href="{{baseUrl}}/catalog/index/{{model.parent.id}}"><i class="glyphicon glyphicon-circle-arrow-up"></i> {{model.parent.title}}</a>
+		{{/model.id}}
+		{{^items}}
+			<!--
+			<p class="list-group-item"><i class="glyphicon glyphicon-th"></i> <-?php echo Yii::t('app','None')?></p>
+			-->
+		{{/items}}
+		{{#items}}
+			<a class="list-group-item" href="{{baseUrl}}/catalog/productDetails/{{model.id}}">{{{model.title}}}</a>
+		{{/items}}
+	</ul>	
+</div>

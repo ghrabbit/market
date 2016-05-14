@@ -1,0 +1,28 @@
+<h2><p class="top-title">{{title}}</p></h2>
+{{#info}}{{{info}}}{{/info}}
+
+<table class="table table-bordered table-striped">
+<tr>
+	<th>{{labels.action}}</th>
+	<th>{{labels.id}}</th>
+	<th>{{labels.username}}</th>
+	<th>{{labels.ordered}}</th>
+	<th>{{labels.approved}}</th>
+	<th>{{labels.status}}</th>
+	<th>{{labels.amount}}</th>
+</tr>
+
+{{#items}}
+<tr>
+	<td><a href="{{baseUrl}}/order/view/{{id}}"><i class="glyphicon glyphicon-paperclip"></i></a></td>
+	
+	<td>{{id}}</td>
+	<td>{{username}}</td>
+	<td>{{ordered}}</td>
+	<td>{{approved}}</td>
+	<td>{{status}}</td>
+	<td>{{amount}}</td>
+</tr>
+{{/items}}
+
+</table>

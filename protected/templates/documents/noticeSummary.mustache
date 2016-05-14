@@ -1,0 +1,12 @@
+<div class="alert alert-info alert-dismissable">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<h3><i class="glyphicon glyphicon-exclamation-sign"></i> {{prompt}}:</h3>
+	<div id="alert-body">
+		{{#errors}}
+			{{#value}}<p class="msg-text">{{{.}}}</p>{{/value}}
+		{{/errors}}
+	</div>
+</div>
+
+
+

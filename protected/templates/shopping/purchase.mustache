@@ -1,0 +1,8 @@
+<h2><p class="top-title">{{labels.title}}</p></h2>
+{{> purchase/header}}
+{{^model}}{{> purchase/isEmpty}}{{/model}}
+<div class="errorSummary">{{#errorSummary}}{{{ errorSummary }}}{{/errorSummary}}</div>
+{{> purchase/wizzard}}
+
+
+

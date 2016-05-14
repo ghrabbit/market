@@ -1,0 +1,10 @@
+<div class="alert alert-info alert-dismissable">
+	<i class="glyphicon glyphicon-exclamation-sign"></i> Attention<p>The category <strong>{{model.title}}</strong> id:#{{model.id}} has been deleted.</p>
+{{#model.hasParent}} <p>All the products and sub-categories belonging to <strong>{{model.title}}</strong> have been reassigned to
+<strong>{{model.parent.title}}</strong>.</p>
+{{/model.hasParent}}
+</div>
+
+
+
+
