@@ -73,7 +73,7 @@ return array(
 		),
 		*/
 		// uncomment the following to use a MySQL database
-		
+		/*
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=sample_eshop_dev',
 			'emulatePrepare' => true,
@@ -81,15 +81,14 @@ return array(
 			'password' => 'sunsun',
 			'charset' => 'utf8',
 		),
-		/*
+        */ 
 		'db'=>array(
-			//'connectionString' => 'pgsql:host=localhost;port=5432;dbname=eshop_development',
 			'connectionString' => 'pgsql:host=localhost;port=5432;dbname=eshop_dev',
 			'username' => 'eshop',
 			'password' => 'sunsun',
 			'charset' => 'utf8',
 		),
-        */ 
+         
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
