@@ -13,6 +13,7 @@ class SiteController extends Controller
 				'class'=>'CCaptchaAction',
 				'backColor'=>0xFFFFFF,
 			),
+			
 			// page action renders "static" pages stored under 'protected/views/site/pages'
 			// They can be accessed via: index.php?r=site/page&view=FileName
 			'page'=>array(
@@ -28,8 +29,16 @@ class SiteController extends Controller
 	public function actionIndex()
 	{
 		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		// not using the default layout 'protected/views/layouts/main.php'
+
+		$pageNo = isset($_GET['page'])?$_GET['page']:1;
+		$pageSize = isset($_GET['pageSize'])?$_GET['pageSize']:6;
+		
+		$this->render('index', array(
+			'title'=>Yii::t('app','Closeout'),
+			'pageNo'=> $pageNo,
+			'pageSize' => $pageSize,
+		));
 	}
 
 	/**
@@ -41,6 +50,10 @@ class SiteController extends Controller
 		{
 			if(Yii::app()->request->isAjaxRequest)
 				echo $error['message'];
+			
+			else if ($error['code'] == 401)
+				$this->redirect('login');
+					
 			else
 				$this->render('error', $error);
 		}
@@ -52,58 +65,45 @@ class SiteController extends Controller
 	public function actionContact()
 	{
 		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
+		//utils::debug_array($_POST);
+		$request = Yii::app()->request;
+		if($request->isPostRequest) 
 		{
-			$model->attributes=$_POST['ContactForm'];
+			$model->attributes=$_POST;
 			if($model->validate())
 			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
+				//$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
+				//$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
+				$headers="From: $model->name <{$model->email}>\r\n".
 					"Reply-To: {$model->email}\r\n".
 					"MIME-Version: 1.0\r\n".
 					"Content-Type: text/plain; charset=UTF-8";
 
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
+				//mail(Yii::app()->params['adminEmail'],$model->subject,$model->body,$headers);
+				if(imap_mail(Yii::app()->params['postmaster'],$model->subject,$model->body,$headers))
+				{
+					//Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
+					$this->render('contact',array(
+						'model'=>$model,
+						'pageTitle'=>'Thank you for contacting us', 
+						'postmsg'=>'We will respond to you as soon as possible.',
+					));
+				}else
+					throw new CHttpException(500,  Yii::t('app','Internal error: unable send email'));
 			}
 		}
-		$this->render('contact',array('model'=>$model));
+		else $this->render('contact',array(
+				'model'=>$model, 
+				//'errormsg'=>isset($_GET['errormsg'])?$_GET['errormsg']:null,
+		));
 	}
-
-	/**
-	 * Displays the login page
-	 */
-	public function actionLogin()
+	
+	public function actionLang($id)
 	{
-		$model=new LoginForm;
-
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-
-		// collect user input data
-		if(isset($_POST['LoginForm']))
-		{
-			$model->attributes=$_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
-		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
+		$app = Yii::app();
+		$app->setLanguage($id);
+		$app->session['ulang']=$id;
+		$this->redirect($app->request->urlReferrer);
 	}
 
-	/**
-	 * Logs out the current user and redirect to homepage.
-	 */
-	public function actionLogout()
-	{
-		Yii::app()->user->logout();
-		$this->redirect(Yii::app()->homeUrl);
-	}
 }

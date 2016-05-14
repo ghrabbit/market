@@ -1,12 +1,10 @@
 <?php
-/* @var $this SiteController */
+$title = Yii::t('app','About');
+//$this->pageTitle=Yii::app()->name . $title;
+$this->breadcrumbs=array($title);
 
-$this->pageTitle=Yii::app()->name . ' - About';
-$this->breadcrumbs=array(
-	'About',
-);
+$data = array(
+		'pageTitle' => $title,
+	);
+	$this->mustacheRender('pages/about', $this->getId(), $data);
 ?>
-<h1>About</h1>
-
-<p>This is a "static" page. You may change the content of this page
-by updating the file <code><?php echo __FILE__; ?></code>.</p>

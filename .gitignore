@@ -5,10 +5,14 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore assets.
-/assets
+/assets/*
 
 # Ignore all logfiles and tempfiles.
 /protected/runtime/*
 /protected/vendor/*
 /protected/composer.lock
-
+./.plans
+/images/product
+/images/category
+/images/keep
+/fonts

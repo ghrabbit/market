@@ -1,28 +1,111 @@
-CREATE TABLE tbl_user (
-    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(128) NOT NULL,
-    password VARCHAR(128) NOT NULL,
-    email VARCHAR(128) NOT NULL
-);
+-- Adminer 3.3.3 MySQL dump
 
-INSERT INTO tbl_user (username, password, email) VALUES ('test1', 'pass1', 'test1@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test2', 'pass2', 'test2@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test3', 'pass3', 'test3@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test4', 'pass4', 'test4@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test5', 'pass5', 'test5@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test6', 'pass6', 'test6@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test7', 'pass7', 'test7@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test8', 'pass8', 'test8@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test9', 'pass9', 'test9@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test10', 'pass10', 'test10@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test11', 'pass11', 'test11@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test12', 'pass12', 'test12@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test13', 'pass13', 'test13@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test14', 'pass14', 'test14@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test15', 'pass15', 'test15@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test16', 'pass16', 'test16@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test17', 'pass17', 'test17@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test18', 'pass18', 'test18@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test19', 'pass19', 'test19@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test20', 'pass20', 'test20@example.com');
-INSERT INTO tbl_user (username, password, email) VALUES ('test21', 'pass21', 'test21@example.com');
+SET NAMES utf8;
+SET foreign_key_checks = 0;
+SET time_zone = 'SYSTEM';
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+DELIMITER ;;
+
+DROP PROCEDURE IF EXISTS `testCall`;;
+CREATE DEFINER=`eshop`@`localhost` PROCEDURE `testCall`(IN intV int, OUT strV VARCHAR(100))
+begin
+  select cast(intV as char) into strV;
+end;;
+
+DELIMITER ;
+
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `img_file` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`,`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `order_history`;
+CREATE TABLE `order_history` (
+  `order_id` int(11) NOT NULL,
+  `status` varchar(32) NOT NULL,
+  `description` text,
+  `ordered` varchar(32) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `order_items`;
+CREATE TABLE `order_items` (
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `price` double NOT NULL,
+  `qty` int(11) NOT NULL,
+  PRIMARY KEY (`order_id`,`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `ordered` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `approved` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customer` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` text CHARACTER SET utf8,
+  `email` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `amount` double NOT NULL,
+  `qty` int(11) NOT NULL,
+  `payment_system` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `username` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `description` varchar(512) CHARACTER SET utf8 DEFAULT NULL,
+  `price` double NOT NULL,
+  `on_special` int(11) NOT NULL DEFAULT '0',
+  `img_file` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `name` (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `products_categories`;
+CREATE TABLE `products_categories` (
+  `product_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY (`product_id`,`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `firstname` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `lastname` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `family` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8_unicode_ci,
+  `salt` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `newpassword` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `_roles` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `family`, `email`, `phone`, `address`, `salt`, `newpassword`, `_roles`) VALUES
+(37,	'customer',	'p+2hK5TpvQvpI',	'Cust',	'Omer',	NULL,	'customer@home.local.one',	'10223322223',	'Краснодар. ул. Рабочая.',	'p+|0rko3tm',	NULL,	NULL),
+(40,	'admin',	'SKUCsJUL7pJiw',	'Admin',	'Nimda',	NULL,	'webmaster@home.local.one',	'11223322223',	'The city.',	'\"SK!Qcbs-6',	NULL,	'admin');
+
+-- 2016-05-12 18:33:10

@@ -1,85 +1,38 @@
 <?php
 /* @var $this SiteController */
-/* @var $model ContactForm */
-/* @var $form CActiveForm */
-
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
-$this->breadcrumbs=array(
-	'Contact',
-);
+	
+	$captcha = $this->widget('CCaptcha',array('id'=>'captcha','showRefreshButton'=>false),true);	
+	$captcha .='<span><button href="'.Yii::app()->homeUrl.'/site/captcha?refresh=1" type="button" class="btn btn-default" name="refreshCaptcha" data-toggle="tooltip" data-placement="bottom" title="refresh captcha Code"><span class="glyphicon glyphicon-refresh"></span></button></span>';
+	
+	$data = array(
+		'model'=>$model->attributes,
+		'pageTitle' => isset($pageTitle)?$pageTitle:Yii::t('app','Contact'),
+		'labels'=> $model->attributeLabels(),
+		'captcha' => $captcha,	
+		'errorSummary' => (isset($model->errors) && count($model->errors))? 
+				utils::mustacheRender('errorSummary', 'documents', array(
+					'errors' => utils::toAttributeArray($model->errors)
+				)):false,
+		'postmsg'=>isset($postmsg)?$postmsg:false,
+	);
+	$this->mustacheRender('pages/contact', $this->getId(), $data);
 ?>
+<script type="text/javascript">
+/*<![CDATA[*/
+jQuery(function($) {
+jQuery(document).on('click', 'button[name=refreshCaptcha]', function(){
+	jQuery.ajax({
+		url: "\/site\/captcha?refresh=1",
+		dataType: 'json',
+		cache: false,
+		success: function(data) {
+			jQuery('#captcha').attr('src', data['url']);
+			jQuery('body').data('captcha.hash', [data['hash1'], data['hash2']]);
+		}
+	});
+	return false;
+});
 
-<h1>Contact Us</h1>
-
-<?php if(Yii::app()->user->hasFlash('contact')): ?>
-
-<div class="flash-success">
-	<?php echo Yii::app()->user->getFlash('contact'); ?>
-</div>
-
-<?php else: ?>
-
-<p>
-If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
-</p>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'contact-form',
-	'enableClientValidation'=>true,
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name'); ?>
-		<?php echo $form->error($model,'name'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email'); ?>
-		<?php echo $form->error($model,'email'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'subject'); ?>
-		<?php echo $form->textField($model,'subject',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'subject'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'body'); ?>
-		<?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'body'); ?>
-	</div>
-
-	<?php if(CCaptcha::checkRequirements()): ?>
-	<div class="row">
-		<?php echo $form->labelEx($model,'verifyCode'); ?>
-		<div>
-		<?php $this->widget('CCaptcha'); ?>
-		<?php echo $form->textField($model,'verifyCode'); ?>
-		</div>
-		<div class="hint">Please enter the letters as they are shown in the image above.
-		<br/>Letters are not case-sensitive.</div>
-		<?php echo $form->error($model,'verifyCode'); ?>
-	</div>
-	<?php endif; ?>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
-
-<?php endif; ?>
+});
+/*]]>*/
+</script>

@@ -4,9 +4,134 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eac293d50b3d9950ab914d34efe06007",
-    "content-hash": "4a18d5fd0e83c77b422e42247c07c7bf",
+    "hash": "f66e16306261ef20d4c396aa7441b07d",
+    "content-hash": "1ee374ff09e680797d20c06a4cc10550",
     "packages": [
+        {
+            "name": "bower-asset/bootstrap",
+            "version": "v3.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "16b48259a62f576e52c903c476bd42b90ab22482"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/16b48259a62f576e52c903c476bd42b90ab22482",
+                "reference": "16b48259a62f576e52c903c476bd42b90ab22482",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.9.1"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "less/bootstrap.less",
+                    "dist/js/bootstrap.js"
+                ],
+                "bower-asset-ignore": [
+                    "/.*",
+                    "_config.yml",
+                    "CNAME",
+                    "composer.json",
+                    "CONTRIBUTING.md",
+                    "docs",
+                    "js/tests",
+                    "test-infra"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+            "keywords": [
+                "css",
+                "framework",
+                "front-end",
+                "js",
+                "less",
+                "mobile-first",
+                "responsive",
+                "web"
+            ]
+        },
+        {
+            "name": "bower-asset/bootstrap-treeview",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jonmiles/bootstrap-treeview.git",
+                "reference": "542f57eab636e14417216e95fa7f7049bbf3d69f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jonmiles/bootstrap-treeview/zipball/542f57eab636e14417216e95fa7f7049bbf3d69f",
+                "reference": "542f57eab636e14417216e95fa7f7049bbf3d69f",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap": ">=3.0.0",
+                "bower-asset/jquery": ">=1.9.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "dist/bootstrap-treeview.min.js",
+                    "dist/bootstrap-treeview.min.css"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ]
+            },
+            "description": "Tree View for Twitter Bootstrap",
+            "keywords": [
+                "bootstrap",
+                "javascript",
+                "jquery",
+                "jquery-plugin",
+                "navigation",
+                "tree",
+                "tree-view",
+                "treeview",
+                "twitter"
+            ]
+        },
+        {
+            "name": "bower-asset/jquery",
+            "version": "2.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jquery/jquery-dist.git",
+                "reference": "af22a351b2ea5801ffb1695abb3bb34d5bed9198"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/af22a351b2ea5801ffb1695abb3bb34d5bed9198",
+                "reference": "af22a351b2ea5801ffb1695abb3bb34d5bed9198",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "dist/jquery.js",
+                "bower-asset-ignore": [
+                    "package.json"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "keywords": [
+                "browser",
+                "javascript",
+                "jquery",
+                "library"
+            ]
+        },
         {
             "name": "mustache/mustache",
             "version": "v2.9.0",
@@ -52,6 +177,44 @@
                 "templating"
             ],
             "time": "2015-08-15 19:23:13"
+        },
+        {
+            "name": "sam-it/yii1-bootstrap-treeview",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SAM-IT/yii1-bootstrap-treeview.git",
+                "reference": "d3682e1fbb62ca379252d4db9909880a7980597f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SAM-IT/yii1-bootstrap-treeview/zipball/d3682e1fbb62ca379252d4db9909880a7980597f",
+                "reference": "d3682e1fbb62ca379252d4db9909880a7980597f",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap-treeview": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SamIT\\Yii1\\Widgets\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sam",
+                    "email": "sam@mousa.nl"
+                }
+            ],
+            "description": "Yii1 widget wrapper for Bootstrap-TreeView",
+            "time": "2015-09-23 15:46:19"
         },
         {
             "name": "yiisoft/yii",

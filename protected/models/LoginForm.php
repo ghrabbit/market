@@ -3,7 +3,7 @@
 /**
  * LoginForm class.
  * LoginForm is the data structure for keeping
- * user login form data. It is used by the 'login' action of 'SiteController'.
+ * user login form data. It is used by the 'login' action of 'AccountController'.
  */
 class LoginForm extends CFormModel
 {
@@ -36,7 +36,11 @@ class LoginForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'rememberMe'=>'Remember me next time',
+			'username'=>Yii::t('app','Username'),
+			'password'=>Yii::t('app','Password'),
+			'rememberMe'=>Yii::t('app','Remember me next time'),
+			'submit'=>Yii::t('app','Submit'),
+			'requiredFields'=>Yii::t('app','requiredFields'),
 		);
 	}
 

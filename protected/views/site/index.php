@@ -1,25 +1,34 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name;
-?>
-
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
-
-<p>Congratulations! You have successfully created your Yii application.</p>
-
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
-
-<?php
-$m = new Mustache_Engine;
-echo $m->render('<p>mustache renderer:</p><p></p><h1>Hello {{planet}}</h1></p>', array('planet' => 'World!')); // "Hello World!"
+	$this->pageTitle=Yii::app()->name.' - '. $title;
+	$model = Product::model();
+	$count=$model->get_on_specials_total_count();
+	$pages=new CPagination($count);
+	//to avoid $_GET assign
+	$pages->params = array();
+	$criteria = new CDbCriteria();
+	$pages->pageSize=$pageSize;
+	$pages->applyLimit($criteria);
+	/*the items on given page*/
+	$_items = $model->get_on_specials_page($pageNo, $pageSize); 	
+		
+	$labels = $model->attributeLabels();
+	$items = array();
+	/**/
+	foreach($_items as $one)
+	{
+		$items[] = array('model'=>$one, 'labels'=>$labels);
+	}	
+		
+	$data = array(
+		'title' => $title,
+		'username' => Yii::app()->user->name,
+		'pageItems' => $items,
+		'pager' => $this->widget('Pager', array('pages' => $pages,), true),
+		'itemsCount' => count($items),
+		'pageNo'=> $pageNo,
+		'pageSize' => $pageSize,
+	);
+	$this->mustacheRender('index', $this->getId(), $data);
 ?>
