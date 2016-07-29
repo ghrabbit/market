@@ -117,5 +117,6 @@ return array(
 		'webmaster'=>'webmaster@home.local.one',
 		'postmaster'=>'postmaster@home.local.one',
 		'support'=>'postmaster@home.local.one',
+        'moneySign'=> 'fa-rub',
 	),
 );

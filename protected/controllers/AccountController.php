@@ -59,11 +59,12 @@ class AccountController extends Controller
 		if(isset($_POST) && count($_POST))
 		{
 			$_POST['rememberMe'] = isset($_POST['rememberMe']) && ($_POST['rememberMe'] == 'on') ?1:0;
-
+            unset($_POST['sign-in']);
 			$model->attributes=$_POST;
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
+            if($model->validate() && $model->login())
+				///$this->redirect(isset(Yii::app()->user->returnUrl)?Yii::app()->user->returnUrl:Yii::app()->homeUrl);
+                $this->redirect(Yii::app()->getBaseUrl(true));
 		}
 		// display the login form
 		$this->render('form',array('model'=>$model, 
@@ -77,9 +78,8 @@ class AccountController extends Controller
 	 */
 	public function actionLogout()
 	{
-		User::require_login();
 		Yii::app()->user->logout();
-		$this->redirect(Yii::app()->homeUrl);
+		$this->redirect(Yii::app()->getBaseUrl(true));
 	}
 	
 /*

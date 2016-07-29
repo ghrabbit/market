@@ -33,10 +33,22 @@ class CartItem extends CFormModel
 	{
 			return $this->product->price;
 	}
+    
+    function fprice() 
+	{
+			return $this->product->fprice();
+	}
 
 	function total() 
 	{
 			return $this->product->price*$this->qty;
+	}
+    
+    function ftotal() 
+	{
+      if(isset(Yii::app()->params['moneySign']))
+        return '<i class="fa '.Yii::app()->params['moneySign'].'"></i> '.$this->total();
+      return $this->total(); 
 	}
 	
 	function __asString() 

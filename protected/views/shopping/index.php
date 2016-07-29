@@ -3,8 +3,8 @@
 
 	$this->pageTitle=Yii::app()->name.' - '. $title;
 	$model = Yii::app()->session['cart'];	
-	$products = $model->itemsPage($pageNo, 6);
-	//Yii::log('product count on page='.count($products),'warning');
+	$cartItems = $model->itemsPage($pageNo, 6);
+	//Yii::log('product count on page='.count($cartItems),'warning');
  		
 	$criteria = new CDbCriteria();
 	$count=count($model->items);
@@ -18,9 +18,8 @@
 	$labels = $model->attributeLabels();
 	$items = array();
 	/**/
-	//if($products)
-	if(is_array($products))
-	foreach($products as $one)
+	if(is_array($cartItems))
+	foreach($cartItems as $one)
 	{
 		$items[] = array('model'=>$one, 'labels'=>$labels);
 	}	

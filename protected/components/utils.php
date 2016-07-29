@@ -3,16 +3,16 @@
 abstract class utils {
 
     static public function debug_array_helper(array $a) {
-      $ret = 'ARRAY(' . count($a) . ')[';
-      if (isset($a)) {   
-			foreach($a as $key => $val ) {
-              if (is_object($val))
-                  $ret .= "<key=$key val=OBJECT>";
-              else if (is_array($val))  //$ret .= "<key=$key val=".$this->debug_array_helper($val ).'>';
-                  $ret .= "<key=$key val=" . self::debug_array_helper($val) . '>';
-              else
-                  $ret .= "<key=$key val=$val >";
-            }    
+        $ret = 'ARRAY(' . count($a) . ')[';
+        if (isset($a)) {
+            foreach ($a as $key => $val) {
+                if (is_object($val))
+                    $ret .= "<key=$key val=OBJECT>";
+                else if (is_array($val))  //$ret .= "<key=$key val=".$this->debug_array_helper($val ).'>';
+                    $ret .= "<key=$key val=" . self::debug_array_helper($val) . '>';
+                else
+                    $ret .= "<key=$key val=$val >";
+            }
         }
         return $ret . ']';
     }
@@ -86,14 +86,13 @@ abstract class utils {
       mcrypt_encrypt( $alg, $key, $data, $mode, $iv); //$plain_text =
       return base64_encode( $encrypted_data); } */
 
-    function money_unit_char()
-    {
-		return '<i class="fa fa-rub fa-fw"></i>';
-		//return '<i class="fa fa-rub"></i> '.Yii::t('lang','rub');
-	}
+    function money_unit_char() {
+        return '<i class="fa fa-rub fa-fw"></i>';
+        //return '<i class="fa fa-rub"></i> '.Yii::t('lang','rub');
+    }
 
 }
-//Whoops, looks like something went wrong.
 
+//Whoops, looks like something went wrong.
 //end class 
 ?>

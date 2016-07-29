@@ -12,9 +12,9 @@
 				<table><td height="60">
 				<h4><a href="{{baseUrl}}/catalog/productDetails/{{model.id}}">{{model.title}}</a></h4>
 				</td></table>
-				<p>{{labels.price}}<span class="badge pull-right"> {{{model.price}}}</span></p>
+				<p>{{labels.price}}<span class="badge pull-right"> {{{model.fprice}}}</span></p>
 				<p>{{labels.qty}}<span class="badge pull-right"> {{model.qty}}</span></p>
-				<p>{{labels.total}}<span class="badge pull-right"> {{model.total}}</span></p>
+				<p>{{labels.total}}<span class="badge pull-right"> {{{model.ftotal}}}</span></p>
 				<p>
 				{{#button}}
 				<button class="btn btn-danger remove-from-cart" data-toggle="tooltip" data-placement="top" 

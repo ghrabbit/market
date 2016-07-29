@@ -141,7 +141,9 @@ function remove($id) {
 	static function ftotal()
 	{
 		$ttl = sprintf("%.2f", isset(Yii::app()->session['cart']) ? Yii::app()->session['cart']->total : 0.0);
-		return '<i class="fa fa-rub"></i> '. $ttl;
+        if(isset(Yii::app()->params['moneySign']))
+          return '<i class="fa '.Yii::app()->params['moneySign'].'"></i> '.$ttl;
+        return $ttl;  
 	}
 	
 	public function itemsPage($pageNo = 1, $pageSize = 0)

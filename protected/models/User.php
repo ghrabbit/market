@@ -176,7 +176,7 @@ class User extends CActiveRecord
 	
 /*
  * 
- * name: require_role
+ * require_role
  * @param
  * @return
  * 
@@ -189,7 +189,7 @@ class User extends CActiveRecord
 	
 /*
  * 
- * name: has_role
+ * has_role
  * @param
  * @return
  * 

@@ -223,4 +223,10 @@ class Product extends CActiveRecord
 	    return  mb_strlen($this->description, '8bit') < self::SHOWSHORT ? CHtml::encode($this->description) :  mb_substr($this->description, 0, self::SHOWSHORT-1, Yii::app()->charset).'...';
       return strlen($this->description) < self::SHOWSHORT ? CHtml::encode($this->description) :  substr($this->description, 0, self::SHOWSHORT-1).'...'; 
 	}
+    
+    function fprice() {
+        if(isset(Yii::app()->params['moneySign']))
+          return '<i class="fa '.Yii::app()->params['moneySign'].'"></i> '.$this->price;
+        return $this->price;  
+    }
 }

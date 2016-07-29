@@ -14,7 +14,7 @@
 				{{#button}}
 					<button class="btn btn-primary add-to-cart" 
 						data-toggle="tooltip" data-placement="top" title="{{labels.addToCart}}">
-						<i class="glyphicon glyphicon-shopping-cart"></i> <span class="badge"> {{model.price}}</span>
+						<i class="glyphicon glyphicon-shopping-cart"></i> <span class="badge"> {{{model.fprice}}}</span>
 					</button> 
 					<span class="pull-right"><button class="btn btn-default product-details" 
 						data-toggle="tooltip" data-placement="top"  title="{{labels.productDetails}}">
@@ -23,10 +23,10 @@
 				{{/button}}
 				{{^button}}
 				<a href="{{baseUrl}}/shopping/cartAdd/{{model.id}}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="{{labels.addToCart}}">
-								<i class="glyphicon glyphicon-shopping-cart"></i> <span class="badge"> {{model.price}}</span></a> 
+					<i class="glyphicon glyphicon-shopping-cart"></i> <span class="badge"> {{{model.fprice}}}</span></a> 
 				<span class="pull-right">
-							<a href="{{baseUrl}}/catalog/productdetails/{{model.id}}" 
-							class="btn btn-default" data-toggle="tooltip" data-placement="top"  title="{{labels.productDetails}}"><i class="glyphicon glyphicon-paperclip"></i></a>
+					<a href="{{baseUrl}}/catalog/productdetails/{{model.id}}" 
+						class="btn btn-default" data-toggle="tooltip" data-placement="top"  title="{{labels.productDetails}}"><i class="glyphicon glyphicon-paperclip"></i></a>
 				</span>
 				{{/button}}
 				</div>

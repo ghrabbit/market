@@ -111,7 +111,7 @@ class Controller extends CController
 		return $m->render($view,$rgs);
 	}
 	
-	public function renderText($view, $searchPath, $rgs=null) 
+	public function renderView($view, $searchPath, $rgs=null) 
 	{
 		return $this->mustacheRenderPartial($view, $searchPath, $rgs);
 	}

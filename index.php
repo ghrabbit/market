@@ -19,7 +19,7 @@ $bower_url = Yii::app()->baseUrl.'/assets/bower_components';
   //->registerPackage('jquery')
    ->registerScriptFile($bower_url.'/jquery/dist/jquery.min.js')
    ->registerScriptFile($bower_url.'/bootstrap/dist/js/bootstrap.min.js')
-   //->registerScriptFile($bower_url.'/selectize/dist/js/selectize.min.js')  
+   ->registerScriptFile($bower_url.'/selectize/dist/js/standalone/selectize.min.js')  
   ;
 
 //composer autoloading not work!
