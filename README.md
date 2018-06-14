@@ -15,6 +15,7 @@ $ git clone -b master https://github.com/ghrabbit/sample-eshop-yii.git sample-es
 Перейдите в каталог sample-eshop-yii/protected  и установите зависимости с помощь bower и composer:
 
 $ bower install
+
 $ composer install 
 
 ##Конфигурация
